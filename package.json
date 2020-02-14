@@ -2,7 +2,15 @@
   "name": "g-suite-add-on",
   "version": "1.0.0",
   "description": "G suite add-on best practices",
-  "main": "index.js",
+  "engines": {
+    "node": "10",
+    "npm": ">=6 <=6.9"
+  },
+  "scripts": {
+    "deploy": "npm run build && npx clasp push",
+    "eslint": "eslint .",
+    "test": "jest"
+  },
   "repository": "https://github.com/saeedalzdh/g-suite-add-on.git",
   "author": "Saeed Alizadeh <saeed.alizadeh@pipedrive.com>",
   "license": "MIT",
@@ -41,5 +49,11 @@
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
-  }
+  },
+  "pre-commit": [
+    "eslint",
+    "test"
+  ],
+  "pre-push": [],
+  "post-merge": []
 }
