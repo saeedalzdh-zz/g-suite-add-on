@@ -1,0 +1,21 @@
+{
+  "timeZone": "America/New_York",
+  "addOns": {
+    "common": {
+      "layoutProperties": {
+        "primaryColor": "#f0c36d",
+        "secondaryColor": "#666"
+      },
+      "logoUrl": "http://placehold.it/32x32",
+      "name": "Sample add-on"
+    },
+    "gmail": {
+      "homepageTrigger": {
+        "enabled": true,
+        "runFunction": "harchi"
+      }
+    }
+  },
+  "dependencies": {},
+  "exceptionLogging": "STACKDRIVER"
+}
