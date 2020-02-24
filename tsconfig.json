@@ -4,7 +4,13 @@
     "noImplicitAny": true,
     "module": "es6",
     "target": "es5",
-    "jsx": "react",
-    "allowJs": true
+    "allowJs": true,
+    "types": [
+      "google-apps-script",
+      "google-apps-script-oauth2",
+      "jest"
+    ],
+    "strict": true,
+    "esModuleInterop": true
   }
 }

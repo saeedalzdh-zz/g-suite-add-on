@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/camelcase */
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const GasPlugin = require('gas-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const { version } = require('./package.json');
 
 const src = path.resolve(__dirname, 'src');
@@ -20,33 +22,14 @@ module.exports = {
 		libraryTarget: 'this'
 	},
 	resolve: {
-		extensions: ['.tsx', '.ts', '.js'],
-	},
-	optimization: {
-		minimizer: [
-			new UglifyJSPlugin({
-				uglifyOptions: {
-					ie8: true,
-					warnings: false,
-					mangle: false,
-					compress: {
-						properties: false,
-						drop_console: false,
-						drop_debugger: isProduction
-					},
-					output: {
-						beautify: !isProduction
-					}
-				}
-			})
-		]
+		extensions: ['.tsx', '.ts', '.js']
 	},
 	module: {
 		rules: [
 			{
 				test: /\.tsx?$/,
 				use: 'ts-loader',
-				exclude: /node_modules/,
+				exclude: /node_modules/
 			},
 			{
 				enforce: 'pre',
