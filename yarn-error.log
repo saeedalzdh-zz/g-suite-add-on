@@ -1,37 +1,45 @@
 Arguments: 
-  /Users/saeedalizadeh/.nvm/versions/node/v12.8.0/bin/node /Users/saeedalizadeh/.nvm/versions/node/v12.8.0/bin/yarn install
+  /Users/saeedalizadeh/.nvm/versions/node/v10.15.1/bin/node /Users/saeedalizadeh/.nvm/versions/node/v10.15.1/bin/yarn install
 
 PATH: 
-  /Users/saeedalizadeh/.nvm/versions/node/v12.8.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+  /Users/saeedalizadeh/.nvm/versions/node/v10.15.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 Yarn version: 
   1.22.0
 
 Node version: 
-  12.8.0
+  10.15.1
 
 Platform: 
   darwin x64
 
 Trace: 
   Error: https://npm-registry-proxy.pipedrive.tools/@pipedrive%2fnode-hooks: unregistered users are not allowed to access package @pipedrive/node-hooks
-      at Request.params.callback [as _callback] (/Users/saeedalizadeh/.nvm/versions/node/v12.8.0/lib/node_modules/yarn/lib/cli.js:66975:18)
-      at Request.self.callback (/Users/saeedalizadeh/.nvm/versions/node/v12.8.0/lib/node_modules/yarn/lib/cli.js:140727:22)
-      at Request.emit (events.js:203:13)
-      at Request.<anonymous> (/Users/saeedalizadeh/.nvm/versions/node/v12.8.0/lib/node_modules/yarn/lib/cli.js:141699:10)
-      at Request.emit (events.js:203:13)
-      at IncomingMessage.<anonymous> (/Users/saeedalizadeh/.nvm/versions/node/v12.8.0/lib/node_modules/yarn/lib/cli.js:141621:12)
-      at Object.onceWrapper (events.js:291:20)
-      at IncomingMessage.emit (events.js:208:15)
-      at endReadableNT (_stream_readable.js:1168:12)
-      at processTicksAndRejections (internal/process/task_queues.js:77:11)
+      at Request.params.callback [as _callback] (/Users/saeedalizadeh/.nvm/versions/node/v10.15.1/lib/node_modules/yarn/lib/cli.js:66975:18)
+      at Request.self.callback (/Users/saeedalizadeh/.nvm/versions/node/v10.15.1/lib/node_modules/yarn/lib/cli.js:140727:22)
+      at Request.emit (events.js:189:13)
+      at Request.<anonymous> (/Users/saeedalizadeh/.nvm/versions/node/v10.15.1/lib/node_modules/yarn/lib/cli.js:141699:10)
+      at Request.emit (events.js:189:13)
+      at IncomingMessage.<anonymous> (/Users/saeedalizadeh/.nvm/versions/node/v10.15.1/lib/node_modules/yarn/lib/cli.js:141621:12)
+      at Object.onceWrapper (events.js:277:13)
+      at IncomingMessage.emit (events.js:194:15)
+      at endReadableNT (_stream_readable.js:1103:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
 
 npm manifest: 
   {
     "name": "g-suite-add-on",
     "version": "1.0.0",
     "description": "G suite add-on best practices",
-    "main": "index.js",
+    "engines": {
+      "node": "10",
+      "npm": ">=6 <=6.9"
+    },
+    "scripts": {
+      "deploy": "npm run build && npx clasp push",
+      "eslint": "eslint .",
+      "test": "jest"
+    },
     "repository": "https://github.com/saeedalzdh/g-suite-add-on.git",
     "author": "Saeed Alizadeh <saeed.alizadeh@pipedrive.com>",
     "license": "MIT",
@@ -70,7 +78,13 @@ npm manifest:
       "uglifyjs-webpack-plugin": "^2.2.0",
       "webpack": "^4.41.2",
       "webpack-cli": "^3.3.10"
-    }
+    },
+    "pre-commit": [
+      "eslint",
+      "test"
+    ],
+    "pre-push": [],
+    "post-merge": []
   }
 
 yarn manifest: 
