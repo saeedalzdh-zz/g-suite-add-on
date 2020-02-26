@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "G suite add-on best practices",
   "engines": {
-    "node": "10"
+    "node": "12"
   },
   "scripts": {
     "deploy": "webpack && npx clasp push",
@@ -47,6 +47,7 @@
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.5",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.10",
+    "clasp": "^1.0.0"
   }
 }
