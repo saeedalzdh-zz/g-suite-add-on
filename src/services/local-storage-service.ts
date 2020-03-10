@@ -16,7 +16,7 @@ class LocalStorage {
 		}
 	}
 
-	get(id: string): object | null {
+	get(id: string): any {
 		if (this._cache) {
 			const data = this._cache.get(`STORE_${id}`);
 			return data && JSON.parse(data);

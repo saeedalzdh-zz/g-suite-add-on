@@ -1,0 +1,5 @@
+class BaseHandler {
+	
+}
+
+export { BaseHandler };

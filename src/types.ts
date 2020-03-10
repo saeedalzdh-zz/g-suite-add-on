@@ -17,9 +17,12 @@ interface EmailMessage {
 	getCc(): string;
 }
 
-interface Contact {
+interface Person {
+	id?: number;
 	name: string;
 	email: string;
+	phone?: string;
+	address?: string;
 }
 
-export { EventObject, EmailMessage, Contact };
+export { EventObject, EmailMessage, Person };

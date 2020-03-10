@@ -5,7 +5,6 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const GasPlugin = require('gas-webpack-plugin');
-const { version } = require('./package.json');
 
 const src = path.resolve(__dirname, 'src');
 const destination = path.resolve(__dirname, 'dist');
@@ -14,10 +13,9 @@ const isProduction = process.env.NODE_ENV === 'production';
 module.exports = {
 	mode: isProduction ? 'production' : 'none',
 	context: __dirname,
-	// entry: ['@babel/polyfill', `${src}/index.ts`],
 	entry: `${src}/index.ts`,
 	output: {
-		filename: `main-${version}.js`,
+		filename: `script.js`,
 		path: destination,
 		libraryTarget: 'this'
 	},

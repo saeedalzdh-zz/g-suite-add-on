@@ -12,10 +12,23 @@
     "gmail": {
       "homepageTrigger": {
         "enabled": true,
-        "runFunction": "harchi"
-      }
+        "runFunction": "gmailHomePageHandler"
+      },
+      "contextualTriggers": [
+        {
+          "unconditional": {},
+          "onTriggerFunction": "gmailOnReadHandler"
+        }
+      ]
     }
   },
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/gmail.addons.execute",
+    "https://www.googleapis.com/auth/gmail.addons.current.message.action",
+    "https://www.googleapis.com/auth/gmail.addons.current.action.compose",
+    "https://www.googleapis.com/auth/userinfo.email",
+    "https://www.googleapis.com/auth/script.external_request"
+  ],
   "dependencies": {},
   "exceptionLogging": "STACKDRIVER"
 }

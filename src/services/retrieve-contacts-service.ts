@@ -1,4 +1,4 @@
-import { EventObject, EmailMessage, Contact } from '../types';
+import { EventObject, EmailMessage, Person } from '../types';
 
 class RetriveContacts {
 	private _messageId: string = '';
@@ -12,8 +12,8 @@ class RetriveContacts {
 		}
 	}
 
-	private _getUniqueContacts(contacts: Contact[]): Contact[] {
-		return contacts.reduce((uniqueContacts: Contact[], contact: Contact) => {
+	private _getUniqueContacts(contacts: Person[]): Person[] {
+		return contacts.reduce((uniqueContacts: Person[], contact: Person) => {
 			for (var i = 0; i < uniqueContacts.length; i++) {
 				const uniqueContact = uniqueContacts[i];
 				if (uniqueContact.email.toLowerCase() === contact.email.toLowerCase()) {
@@ -36,9 +36,9 @@ class RetriveContacts {
 		return Session.getEffectiveUser().getEmail() === email;
 	}
 
-	private _parseStringContact(stringContact: string): Contact[] {
+	private _parseStringContact(stringContact: string): Person[] {
 		const regex = /(([\w,"\s]+)\s)?<?([^@<\s]+@[^@\s>]+)>?,?/g;
-		let contacts: Contact[] = [];
+		let contacts: Person[] = [];
 		let m;
 
 		// reference: https://theconfused.me/blog/extracting-recipients-information-from-email-headers-returned-from-gmail-api/
@@ -88,14 +88,14 @@ class RetriveContacts {
 		return [message.getFrom(), message.getTo(), message.getCc()];
 	}
 
-	private _getAllParsedContacts(stringContacts: string[]): Contact[] {
-		return stringContacts.reduce((contacts: Contact[], stringContact: string) => [
+	private _getAllParsedContacts(stringContacts: string[]): Person[] {
+		return stringContacts.reduce((contacts: Person[], stringContact: string) => [
 			...contacts,
 			...this._parseStringContact(stringContact)
 		], []);
 	}
 
-	getMessageContacts(): Contact[] {
+	getMessageContacts(): Person[] {
 		const stringContacts = this._getContactStringsFromMessage();
 		const contacts = this._getAllParsedContacts(stringContacts);
 		return this._getUniqueContacts(contacts);

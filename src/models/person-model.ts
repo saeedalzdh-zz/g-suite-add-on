@@ -1,26 +1,34 @@
 import { localStorage } from '../services/local-storage-service';
-
-interface PersonSchema {
-	id: number;
-	name: string;
-	email: string;
-	phone: string;
-	address: string;
-}
+import { Person } from '../types';
 
 class PersonModel {
-	private _person: PersonSchema;
+	private _person: Person;
 
-	constructor(person: PersonSchema) {
+	constructor(person: Person) {
 		this._person = person;
 	}
 
-	create() {
-		localStorage.set(`PERSON_${this._person.id}`, this._person);
+	static isExist(contact: Person): boolean {
+		const persons = PersonModel.getAll();
+
+		return !!persons.length && !!persons.filter(person =>
+			person.email.toLowerCase().trim() === contact.email.toLowerCase().trim()
+		).length;
 	}
 
-	update() {
-		localStorage.get(`PERSON_${this._person.id}`);
+	static getAll(): any[] {
+		return localStorage.get('PERSON') || [];
+	}
+
+	create() {
+		const person = this._person;
+
+		localStorage.set('PERSON', {
+			...PersonModel.getAll(),
+			person
+		});
+
+		console.log(PersonModel.getAll());
 	}
 }
 
